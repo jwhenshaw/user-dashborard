@@ -1,0 +1,25 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["plugin:flowtype/recommended", "prettier", "react-app"],
+  "rules": {
+    "jsx-a11y/href-no-hash": "off"
+  },
+  "globals": {
+    "filestack": true,
+    "Stripe": true,
+    "dataLayer": true
+  },
+  "plugins": ["flowtype", "jsx-a11y", "react"],
+  "settings": {
+    "import/resolver": {
+      "webpack": "webpack.dev.config.js"
+    },
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
+  },
+  "env": {
+    "jest": true,
+    "browser": true
+  }
+}
