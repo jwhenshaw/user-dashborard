@@ -1,13 +1,11 @@
 // @flow
 import React from 'react';
 
-import { Search as SearchIcon } from '@material-ui/icons';
 import { MuiThemeProvider, withStyles } from '@material-ui/core/styles';
-import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
 import theme from './MuiTheme';
 import SearchBar from './components/SearchBar';
-import { POINT_CONVERSION_HYBRID } from 'constants';
 
 const styles = theme => ({
   root: {
