@@ -1,21 +1,38 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+// @flow
+import React from 'react';
 
-class App extends Component {
+import { MuiThemeProvider, withStyles } from '@material-ui/core/styles';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
+
+import theme from './MuiTheme';
+
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+};
+
+type Props = {
+  classes: Object,
+};
+
+class App extends React.Component<Props> {
   render() {
+    const { classes } = this.props;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <MuiThemeProvider theme={theme}>
+        <div className={classes.root}>
+          <AppBar position="static">
+            <Toolbar>
+              <Typography variant="title" color="inherit">
+                Project Unicorn
+              </Typography>
+            </Toolbar>
+          </AppBar>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
