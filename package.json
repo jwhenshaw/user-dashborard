@@ -30,12 +30,13 @@
     ]
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "eslint": "eslint --max-warnings 0",
     "eject": "react-scripts eject",
+    "flow": "flow",
     "prettier": "prettier --config ./.prettierrc --write",
-    "eslint": "eslint --max-warnings 0"
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom"
   },
   "husky": {
     "hooks": {
