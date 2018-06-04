@@ -18,17 +18,10 @@ const styles = theme => {
       },
     },
     textInputUnderline: {
-      '&:hover:not($disabled):not($error):not($focused):before': {
-        // doesn't override hove state..why?
-        borderBottomColor: bottomLineColor,
-      },
       '&:after': {
         borderBottomColor: bottomLineColor,
       },
       '&:before': {
-        borderBottomColor: bottomLineColor,
-      },
-      '&$disabled:before': {
         borderBottomColor: bottomLineColor,
       },
     },

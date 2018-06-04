@@ -1,57 +1,23 @@
 // @flow
 import React from 'react';
 
-import { MuiThemeProvider, withStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
 import theme from './MuiTheme';
-import SearchBar from './components/SearchBar';
+import Dashboard from './components/Dashboard';
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  title: {
-    flex: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-  searchBar: {},
-});
-
-type Props = {
-  classes: Object,
-};
+type Props = {};
 
 type State = {};
 
 class App extends React.Component<Props, State> {
   render() {
-    const { classes } = this.props;
-
     return (
       <MuiThemeProvider theme={theme}>
-        <div className={classes.root}>
-          <AppBar position="static">
-            <Toolbar>
-              <Typography
-                variant="title"
-                color="inherit"
-                className={classes.title}
-              >
-                Project Unicorn
-              </Typography>
-              <div className={classes.searchBar}>
-                <SearchBar onClose={this.hideSearchBar} />
-              </div>
-            </Toolbar>
-          </AppBar>
-        </div>
+        <Dashboard />
       </MuiThemeProvider>
     );
   }
 }
 
-export default withStyles(styles)(App);
+export default App;
