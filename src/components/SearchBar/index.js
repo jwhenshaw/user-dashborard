@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { TextField } from '@material-ui/core';
+import { FormControl, Input, InputLabel } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => {
@@ -11,13 +11,14 @@ const styles = theme => {
     textField: {
       width: 300,
     },
-    textInputColor: {
+    inputColor: {
       color: theme.palette.secondary.main,
-      '&&focused': {
+      '&$inputColorFocused': {
         color: theme.palette.secondary.main,
       },
     },
-    textInputUnderline: {
+    inputColorFocused: {},
+    inputUnderline: {
       '&:after': {
         borderBottomColor: bottomLineColor,
       },
@@ -42,28 +43,47 @@ class SearchBar extends React.Component<Props, State> {
   render() {
     const { classes } = this.props;
     return (
-      <form className={classes.root} noValidate autoComplete="off">
-        <TextField
-          id="searchText"
-          label="Search"
-          className={classes.textField}
-          value={this.state.name}
-          onChange={this.handleChange('searchText')}
-          InputProps={{
-            classes: {
-              input: classes.textInputColor,
-              underline: classes.textInputUnderline,
-            },
+      <FormControl className={classes.textField}>
+        <InputLabel
+          FormLabelClasses={{
+            root: classes.inputColor,
+            focused: classes.inputColorFocused,
           }}
-          InputLabelProps={{
-            classes: {
-              root: classes.textInputColor,
-            },
+          htmlFor="search-input-label"
+        >
+          Search
+        </InputLabel>
+        <Input
+          classes={{
+            root: classes.inputColor,
+            underline: classes.inputUnderline,
           }}
+          id="search-input"
         />
-      </form>
+      </FormControl>
     );
   }
 }
 
 export default withStyles(styles)(SearchBar);
+
+/*<form className={classes.root} noValidate autoComplete="off">
+  <TextField
+    id="searchText"
+    label="Search"
+    className={classes.textField}
+    value={this.state.name}
+    onChange={this.handleChange('searchText')}
+    InputProps={{
+      classes: {
+        input: classes.inputColor,
+        underline: classes.textInputUnderline,
+      },
+    }}
+    InputLabelProps={{
+      classes: {
+        root: classes.inputColor,
+      },
+    }}
+  />
+  </form> */
