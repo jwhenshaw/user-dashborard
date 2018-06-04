@@ -32,9 +32,27 @@ type Props = {
   classes: Object,
 };
 
-type State = {};
+type State = {
+  users: Object,
+};
 
 class Dashboard extends React.Component<Props, State> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: mockUsersData,
+    };
+  }
+
+  handleRemoveUser = idToRemove => {
+    const users = Object.keys(this.state.users).reduce((acc, userId) => {
+      if (userId !== idToRemove)
+        return { ...acc, [userId]: this.state.users[userId] };
+      return acc;
+    }, {});
+    this.setState({ users });
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -54,7 +72,10 @@ class Dashboard extends React.Component<Props, State> {
             </div>
           </Toolbar>
         </AppBar>
-        <UserTabs users={mockUsersData} />
+        <UserTabs
+          users={this.state.users}
+          onRemoveUser={this.handleRemoveUser}
+        />
       </div>
     );
   }

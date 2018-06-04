@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import CancelIcon from '@material-ui/icons/Cancel';
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Tab, Tabs, Typography } from '@material-ui/core';
 
@@ -52,6 +53,11 @@ class UserTabs extends React.Component<Props, State> {
     this.setState({ value });
   };
 
+  handleCloseTab = tabUserId => () => {
+    const { onRemoveUser } = this.props;
+    onRemoveUser(tabUserId);
+  };
+
   render() {
     const { classes, users } = this.props;
     const { value, userIds } = this.state;
@@ -68,7 +74,11 @@ class UserTabs extends React.Component<Props, State> {
             scrollButtons="auto"
           >
             {userIds.map(userId => (
-              <Tab key={userId} label={users[userId].username} />
+              <Tab
+                key={userId}
+                label={users[userId].username}
+                icon={<CancelIcon onClick={this.handleCloseTab(userId)} />}
+              />
             ))}
           </Tabs>
         </AppBar>
